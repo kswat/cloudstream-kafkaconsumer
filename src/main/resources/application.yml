@@ -1,0 +1,18 @@
+server:
+  port: 7002
+spring:
+  application:
+    name: cloudstream-kafkaconsumer
+  cloud:
+    function:
+      definition: sanitizingConsumer
+    stream:
+      default-binder: kafka
+      bindings:
+        sanitizingConsumer-in-0:
+          destination: batch-in
+        sanitizingConsumer-out-0:
+          destination: sanitized-event
+      kafka:
+        binder:
+          brokers: localhost:9092
